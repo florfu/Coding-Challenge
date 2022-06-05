@@ -6,16 +6,24 @@ import Note from './Note';
 import CreateArea from './CreateArea';
 
 function App() {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState(() => {
+    const saved = localStorage.getItem('noteStorage');
+    const initialValue = JSON.parse(saved);
+    return initialValue || [];
+  });
 
   // addNote() adds element (passed over from CreateArea component) to notes array
   function addNote(input) {
-    setNotes((prevNotes) => [...prevNotes, input]);
+    const newNotes = [...notes, input];
+    setNotes(newNotes);
+    localStorage.setItem('noteStorage', JSON.stringify(newNotes));
   }
 
   // deleteNote() deletes element (passed over from Note component) from notes array
   function deleteNote(id) {
-    setNotes((prevNotes) => prevNotes.filter((noteItem, index) => index !== id));
+    const newNotes = notes.filter((element, index) => index !== id);
+    setNotes(newNotes);
+    localStorage.setItem('noteStorage', JSON.stringify(newNotes));
   }
 
   return (

@@ -73,6 +73,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 # Dependencies
 ## uuid 
 Package that generates unique keys for components
+documentation: https://github.com/uuidjs/uuid#readme
 
 # Notes
 - Disabled prop-types check on eslint
