@@ -7,7 +7,7 @@ function CreateArea(props) {
         content: ""
       });
     
-    //handles input state
+    //handles input state (title & content)
     function handleInput(event) {
         const {name, value} = event.target;
 

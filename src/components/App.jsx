@@ -9,12 +9,20 @@ import CreateArea from "./CreateArea";
 function App() {
     let [notes, setNotes] = useState([]);
 
-    //addNote() adds note title & content (passed over from CreateArea component) to the notes array
+    //addNote() adds element (passed over from CreateArea component) to notes array
     function addNote(input) {
         setNotes((prevNotes)=>
            {return[...prevNotes, input]});
     }
     
+    //deleteNote() deletes element (passed over from Note component) from notes array
+    function deleteNote(id) {
+        setNotes(prevNotes=>
+            {return prevNotes.filter((noteItem,index) => 
+                {return index !== id})}
+        );
+    }
+
     return (
         <main>
             <Header />
@@ -29,6 +37,7 @@ function App() {
                                 id={index}
                                 title={note.title}
                                 content={note.content}
+                                delete={deleteNote}
                             />);
                         }
                      )
