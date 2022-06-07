@@ -34,13 +34,11 @@ function App() {
   }
 
   // updateNote() modifies edited text (passed over from Note component) in notes array
-  function updateNote(name, textContent, id) {
+  function updateNote(noteForm, id) {
     const editIndex = notes.findIndex((element) => element.id === id); // find index of edited note
     const newNotes = notes; // aux array of notes
-
-    // Editing the note in the array. [name] is the name of the element that triggered the event
-    // (title or content) & textContent is the modified text.
-    newNotes[editIndex] = { ...notes[editIndex], [name]: textContent };
+    newNotes[editIndex] = noteForm;
+    console.log(newNotes);
     setNotes(newNotes);
     localStorage.setItem('noteStorage', JSON.stringify(newNotes));
   }

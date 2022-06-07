@@ -21,6 +21,7 @@ function CreateArea({ addNote }) {
       title: '',
       content: '',
     });
+
     // prevents page refresh after submit
     event.preventDefault();
   }

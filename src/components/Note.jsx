@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function Note({
   title, content, id, deleteNote, updateNote,
 }) {
+  const [noteForm, setNoteForm] = useState({ title, content, id });
+
   // function that calls deleteNote() from App component
   function handleDelete() {
     deleteNote(id);
@@ -10,34 +12,35 @@ function Note({
 
   // function that calls updateNote() from App component
   function handleEdit(event) {
-    const { textContent } = event.target; // gets hold of the text that changed inside the tag
-    const name = event.target.getAttribute('name'); // value = title or content
-    // notes new values
-    updateNote(name, textContent, id);
+    const { name, value } = event.target;
+    setNoteForm((prevValue) => ({
+      ...prevValue,
+      [name]: value,
+    }));
+  }
+
+  function handleUpdate() {
+    updateNote(noteForm, id);
   }
 
   return (
-    <div className="note">
-      <h1
-        contentEditable
-        suppressContentEditableWarning
+    <form className="note">
+      <input
         id={id}
         name="title"
-        onBlur={handleEdit}
-      >
-        {title}
-      </h1>
-      <p
-        contentEditable
-        suppressContentEditableWarning
+        onChange={handleEdit}
+        onBlur={handleUpdate}
+        value={noteForm.title}
+      />
+      <textarea
         id={id}
         name="content"
-        onBlur={handleEdit}
-      >
-        {content}
-      </p>
+        onChange={handleEdit}
+        onBlur={handleUpdate}
+        value={noteForm.content}
+      />
       <button type="button" onClick={handleDelete}>DELETE</button>
-    </div>
+    </form>
   );
 }
 
