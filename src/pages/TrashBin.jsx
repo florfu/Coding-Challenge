@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid'; // unique id generator
 import Note from '../components/Note';
 
-function TrashBin() {
+function TrashBin({ toggleTrashIcon }) {
   // handles trash notes state.
   // Initializes from deletedNoteStorage -> notes that were deleted in Home component
   const [trashNotes, setTrashNotes] = useState(() => {
@@ -10,6 +10,9 @@ function TrashBin() {
     const initialValue = JSON.parse(saved);
     return initialValue || [];
   });
+
+  // check conditional rendering of trash icon
+  toggleTrashIcon(trashNotes);
 
   function deleteTrashNote(id) {
     // find index of deleted note
@@ -20,7 +23,7 @@ function TrashBin() {
     localStorage.setItem('deletedNoteStorage', JSON.stringify(newNotes)); // update LocalStorage
   }
 
-  // aux function to handle append note to noteStorage
+  // aux function for restoring notes. Handles appending notes to noteStorage
   function appendToStorage(name, data) {
     // get noteStorage current Value
     let currentValue = localStorage.getItem(name);
