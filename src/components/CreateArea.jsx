@@ -26,26 +26,38 @@ function CreateArea({ addNote }) {
     event.preventDefault();
   }
 
+  // conditional rendering of Create Note area
+  const [isExpanded, setExpanded] = useState(false);
+
+  function expand() {
+    setExpanded(true);
+  }
+
   return (
     <div>
       <form>
+        { isExpanded && (
         <input
-          onChange={handleInput}
           name="title"
           placeholder="Title"
           value={input.title}
-        />
-        <textarea
           onChange={handleInput}
+        />
+        )}
+        <textarea
           name="content"
           placeholder="Take a note..."
-          rows="3"
+          rows={isExpanded ? 3 : 1}
           value={input.content}
+          onChange={handleInput}
+          onClick={expand}
         />
         {/* add button, when clicked, calls addNote function from App component */}
-        <button onClick={handleAddBtn} type="button">
-          Add
-        </button>
+        { isExpanded ? (
+          <button onClick={handleAddBtn} type="button">
+            Add
+          </button>
+        ) : null}
       </form>
     </div>
   );
