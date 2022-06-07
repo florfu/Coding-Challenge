@@ -9,7 +9,6 @@ function CreateArea({ addNote }) {
   // handles input state (title & content)
   function handleInput(event) {
     const { name, value } = event.target;
-
     setInput((prevValue) => ({
       ...prevValue,
       [name]: value,
@@ -43,10 +42,7 @@ function CreateArea({ addNote }) {
           value={input.content}
         />
         {/* add button, when clicked, calls addNote function from App component */}
-        <button
-          onClick={handleAddBtn}
-          type="button"
-        >
+        <button onClick={handleAddBtn} type="button">
           Add
         </button>
       </form>
