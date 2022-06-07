@@ -1,8 +1,26 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
-    <header><h1>Post it</h1></header>
+    <header>
+      <h1>Post it</h1>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link to="/TrashBin">
+              Trash Bin
+            </Link>
+
+          </li>
+        </ul>
+      </nav>
+    </header>
   );
 }
 
