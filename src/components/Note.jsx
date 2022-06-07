@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 
 function Note({
-  title, content, id, deleteNote, updateNote,
+  title, content, id, deleteNote, updateNote, restoreNote,
 }) {
+  // handles note edits state
   const [noteForm, setNoteForm] = useState({ title, content, id });
 
-  // function that calls deleteNote() from App component
-  function handleDelete() {
-    deleteNote(id);
-  }
-
-  // function that calls updateNote() from App component
+  // function that saves input changes
   function handleEdit(event) {
     const { name, value } = event.target;
     setNoteForm((prevValue) => ({
@@ -19,8 +15,20 @@ function Note({
     }));
   }
 
+  // function that calls updateNote() from Home component
   function handleUpdate() {
     updateNote(noteForm, id);
+  }
+
+  // function that calls deleteNote() from Home component
+  function handleDelete() {
+    deleteNote(id);
+  }
+
+  // function that calls restoreNote() from Home component
+  // Used for notes in trash bin
+  function handleRestore() {
+    restoreNote(id);
   }
 
   return (
@@ -39,6 +47,7 @@ function Note({
         onBlur={handleUpdate}
         value={noteForm.content}
       />
+      <button type="button" onClick={handleRestore}>RESTORE</button>
       <button type="button" onClick={handleDelete}>DELETE</button>
     </form>
   );

@@ -4,9 +4,16 @@ import Note from '../components/Note';
 import CreateArea from '../components/CreateArea';
 
 function Home() {
-  // notes state initializes from LocalStorage
+  // handles notes state. Initializes from LocalStorage
   const [notes, setNotes] = useState(() => {
     const saved = localStorage.getItem('noteStorage');
+    const initialValue = JSON.parse(saved);
+    return initialValue || [];
+  });
+
+  // handles deletedNotes state. Initializes from LocalStorage.
+  const [deletedNotes, setDeletedNotes] = useState(() => {
+    const saved = localStorage.getItem('deletedNoteStorage');
     const initialValue = JSON.parse(saved);
     return initialValue || [];
   });
@@ -26,9 +33,14 @@ function Home() {
   // deleteNote() deletes element (passed over from Note component) from notes array
   function deleteNote(id) {
     const deleteIndex = notes.findIndex((element) => element.id === id);// find index of deletednote
+    const toTrash = [...deletedNotes, notes[deleteIndex]];
+    setDeletedNotes(toTrash); // add the deleted note to deletedNotes
+    localStorage.setItem('deletedNoteStorage', JSON.stringify(toTrash)); // store deletedNotes in LocalStorage
+
+    // new array without the deleted note
     const newNotes = notes.filter((element, index) => index !== deleteIndex);
     setNotes(newNotes);
-    localStorage.setItem('noteStorage', JSON.stringify(newNotes));
+    localStorage.setItem('noteStorage', JSON.stringify(newNotes)); // update LocalStorage
   }
 
   // updateNote() modifies edited text (passed over from Note component) in notes array

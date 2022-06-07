@@ -13,6 +13,7 @@ function Header() {
             </Link>
           </li>
           <li>
+            {/* //TODO: Trashbin as an icon */}
             <Link to="/TrashBin">
               Trash Bin
             </Link>
