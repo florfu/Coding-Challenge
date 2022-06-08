@@ -11,7 +11,7 @@ import Header from './Header';
 import Footer from './Footer';
 
 function App() {
-  // App has global state of notes & deleted notes
+  // App stores global state of notes & deleted notes
 
   // handles notes state. Initializes from LocalStorage
   const [notes, setNotes] = useState(() => {
@@ -27,9 +27,9 @@ function App() {
     return initialValue || [];
   });
 
-  // addNote() adds element (passed over from CreateArea component) to notes array
+  // addNote() adds element (input passed over from CreateArea -> Home -> App) to notes array
   function addNote(input) {
-    // adding id to input passed over from CreateArea
+    // adding new id to input passed over from CreateArea
     const note = {
       id: uuidv4(),
       ...input,
@@ -39,13 +39,13 @@ function App() {
     localStorage.setItem('noteStorage', JSON.stringify(newNotes));
   }
 
-  // deleteNote() deletes element (passed over from Note component) from notes array
+  // deleteNote() deletes element (id passed over from Note -> Home -> App) from notes array
   // & adds deleted notes to trash
   function deleteNote(id) {
     const deleteIndex = notes.findIndex((element) => element.id === id);// find index of deletednote
     const toTrash = [...deletedNotes, notes[deleteIndex]];
     setDeletedNotes(toTrash); // add the deleted note to deletedNotes
-    localStorage.setItem('deletedNoteStorage', JSON.stringify(toTrash)); // store deletedNotes in LocalStorag
+    localStorage.setItem('deletedNoteStorage', JSON.stringify(toTrash)); // update LocalStorag
 
     // new array without the deleted note
     const newNotes = notes.filter((element, index) => index !== deleteIndex);
@@ -53,7 +53,7 @@ function App() {
     localStorage.setItem('noteStorage', JSON.stringify(newNotes)); // update LocalStorage
   }
 
-  // updateNote() modifies edited text (passed over from Note component) in notes array
+  // updateNote() modifies edited text (id passed over from Note -> Home -> App) in notes array
   function updateNote(noteForm, id) {
     const editIndex = notes.findIndex((element) => element.id === id); // find index of edited note
     const newNotes = notes; // aux array of notes
@@ -62,7 +62,7 @@ function App() {
     localStorage.setItem('noteStorage', JSON.stringify(newNotes));
   }
 
-  // aux function for restoring notes. Handles appending notes to noteStorage
+  // aux function. Handles appending edited notes to noteStorage (notes on Local Storage)
   function appendToStorage(name, data) {
     // get noteStorage current Value
     let currentValue = localStorage.getItem(name);
@@ -75,7 +75,7 @@ function App() {
     localStorage.setItem(name, JSON.stringify(newNotes));
   }
 
-  // Restore notes
+  // Restore notes (id passed over from Note -> TrashBin -> App)
   function restoreDeletedNote(id) {
     // find index of restored note
     const restoredIndex = deletedNotes.findIndex((element) => element.id === id);
@@ -91,7 +91,8 @@ function App() {
     // update deletedNoteStorage
     localStorage.setItem('deletedNoteStorage', JSON.stringify(newDeletedNotes));
   }
-  // deletes permanently notes in trash
+
+  // deletes permanently notes in TrashBin (id passed over from Note -> TrashBin -> App)
   function deleteTrashNote(id) {
     // find index of deleted note
     const deleteIndex = deletedNotes.findIndex((element) => element.id === id);

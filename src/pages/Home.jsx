@@ -6,22 +6,28 @@ import CreateArea from '../components/CreateArea';
 function Home({
   notes, addNote, deleteNote, updateNote,
 }) {
+  // gets input from CreateArea component
+  // passes it over to App component, where notes state is stored.
   function handleAddInHome(input) {
     addNote(input);
   }
 
+  // gets deleted note id from note component
+  // and passes it over to App component where deleted notes state is stored
   function handleDeleteInHome(id) {
     deleteNote(id);
   }
 
+  // gets note's new content from note component, and passes it over to App component
   function handleUpdateInHome(noteForm, id) {
     updateNote(noteForm, id);
   }
 
+  // sets props for note components
   function createNote(note) {
     return (
       <Note
-        key={uuidv4()}
+        key={uuidv4()} // creates unique key
         id={note.id}
         title={note.title}
         content={note.content}

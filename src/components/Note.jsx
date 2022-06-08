@@ -17,24 +17,26 @@ function Note({
     }));
   }
 
-  // function that calls updateNote() from Home component
+  // passes over note's new content to Home component
   function handleUpdate() {
     handleUpdateInParent(noteForm, id);
   }
 
-  // function that calls deleteNote() from Home component
+  // triggered by delete button
+  // passes over deleted note id to Home or TrashBin component.
   function handleDelete() {
     handleDeleteInParent(id);
   }
 
-  // // function that calls restoreNote() from Home component
-  // // Used for notes in trash bin
+  // triggered by restore button on notes on trashbin screen
+  // passes over restored note id to Home component
   function handleRestore() {
     handleRestoreInParent(id);
   }
 
   return (
     <div className="relative m-6 p-4 w-60 block bg-white border-gray-200 rounded-lg border shadow-md sm:p-6 lg:p-8">
+      {/* notes on trashbin have a restore button */}
       { trashScreen
         ? (
           <button
@@ -53,7 +55,7 @@ function Note({
         onChange={handleEdit}
         onBlur={handleUpdate}
         value={noteForm.title}
-        disabled={trashScreen}
+        disabled={trashScreen} // on trashbin screen, edits are disabled
         maxLength="18"
       />
       <textarea
@@ -63,7 +65,7 @@ function Note({
         onChange={handleEdit}
         onBlur={handleUpdate}
         value={noteForm.content}
-        disabled={trashScreen}
+        disabled={trashScreen} // on trashbin screen, edits are disabled
         maxLength="120"
       />
       <button type="button" className="absolute top-2 right-2" onClick={handleDelete}>

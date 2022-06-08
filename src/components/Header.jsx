@@ -11,6 +11,8 @@ function Header({ isTrashFull }) {
     >
       <Link to="/" className="text-white font-medium text-3xl">Post it app</Link>
       <Link to="/TrashBin">
+        {/* conditional render of empty or full trashbin icon.
+        isTrashFull comes from App component */}
         { isTrashFull
           ? (<img className="trash-icon" src={fullTrash} alt="full-trash" />)
           : (<img className="trash-icon" src={emptyTrash} alt="empty-trash" />) }
