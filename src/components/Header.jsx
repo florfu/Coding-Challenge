@@ -5,7 +5,10 @@ import fullTrash from '../images/full-trash.png';
 
 function Header({ isTrashFull }) {
   return (
-    <header className="flex items-center justify-between p-4 bg-gradient-to-l from-teal-custom to-teal-600">
+    <header
+      className="flex items-center justify-between p-4 bg-gradient-to-l from-teal-custom to-teal-600"
+      data-testid="Header"
+    >
       <Link to="/" className="text-white font-medium text-3xl">Post it app</Link>
       <Link to="/TrashBin">
         { isTrashFull
