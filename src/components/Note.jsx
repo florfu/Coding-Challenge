@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { TiDeleteOutline } from 'react-icons/ti';
 
 function Note({
-  title, content, id, deleteNote, updateNote, restoreNote,
+  title, content, id, deleteNote, updateNote, restoreNote, trashScreen,
 }) {
   // handles note edits state
   const [noteForm, setNoteForm] = useState({ title, content, id });
@@ -32,24 +33,40 @@ function Note({
   }
 
   return (
-    <form className="note">
+    <div className="relative m-6 p-4 w-60 block bg-white border-gray-200 rounded-lg border shadow-md sm:p-6 lg:p-8">
+      { trashScreen
+        ? (
+          <button
+            type="button"
+            className="absolute top-2 left-2 mb-3 text-xs bg-transparent hover:bg-slate-600 text-slate-600 font-semibold hover:text-white py-1 px-2 border border-slate-600 hover:border-transparent rounded"
+            onClick={handleRestore}
+          >
+            RESTORE
+          </button>
+        )
+        : null}
       <input
+        className="mt-6 w-full text-lg resize-none"
         id={id}
         name="title"
         onChange={handleEdit}
         onBlur={handleUpdate}
         value={noteForm.title}
+        disabled={trashScreen}
       />
       <textarea
+        className="textarea text-sm w-full resize-none h-24"
         id={id}
         name="content"
         onChange={handleEdit}
         onBlur={handleUpdate}
         value={noteForm.content}
+        disabled={trashScreen}
       />
-      <button type="button" onClick={handleRestore}>RESTORE</button>
-      <button type="button" onClick={handleDelete}>DELETE</button>
-    </form>
+      <button type="button" className="absolute top-2 right-2" onClick={handleDelete}>
+        <TiDeleteOutline color="#475569" size="1.5em" />
+      </button>
+    </div>
   );
 }
 

@@ -71,9 +71,21 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 =======================
 # Dependencies
+## react-router-dom
+The react-router-dom package contains bindings for using React Router in web applications.
+documentation: https://github.com/remix-run/react-router#readme
+
+## tailwind
+CSS framework
+documentation: https://tailwindcss.com/
+
 ## uuid 
-Package that generates unique keys for components
+Package that generates unique keys for components.
 documentation: https://github.com/uuidjs/uuid#readme
+
+## react icons
+Icons package.
+documentation: https://react-icons.github.io/react-icons/
 
 # Notes
 - Disabled prop-types check on eslint

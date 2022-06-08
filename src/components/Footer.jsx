@@ -3,9 +3,9 @@ import React from 'react';
 function Footer() {
   const copyrightYear = new Date().getFullYear();
   return (
-    <footer>
-      <p>
-        Copyright ©
+    <footer className="bg-teal-custom text-white w-full h-6 text-center">
+      <p className="inset-0">
+        Brought to you by Florencia Funes ©
         {' '}
         {copyrightYear}
       </p>

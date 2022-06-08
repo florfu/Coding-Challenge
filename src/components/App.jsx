@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
+
 import Home from '../pages/Home';
 import TrashBin from '../pages/TrashBin';
 import Header from './Header';
@@ -24,8 +25,9 @@ function App() {
   }
 
   return (
+
     <Router>
-      <div>
+      <div className="relative h-full min-h-full">
         <Header isTrashFull={trashIsFull} />
         <Routes>
           <Route exact path="/" element={<Home toggleTrashIcon={toggleTrashIcon} />} />
@@ -34,6 +36,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+
   );
 }
 

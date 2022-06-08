@@ -34,10 +34,11 @@ function CreateArea({ addNote }) {
   }
 
   return (
-    <div>
-      <form>
+    <div className="mx-auto mt-6 p-4 max-w-sm block bg-teal-custom border-gray-200 rounded-lg border shadow-lg sm:p-6 lg:p-8">
+      <form className="space-y-6 max-w">
         { isExpanded && (
         <input
+          className="w-full p-2.5 rounded-md"
           name="title"
           placeholder="Title"
           value={input.title}
@@ -45,6 +46,7 @@ function CreateArea({ addNote }) {
         />
         )}
         <textarea
+          className="w-full p-2.5 rounded-md"
           name="content"
           placeholder="Take a note..."
           rows={isExpanded ? 3 : 1}
@@ -54,7 +56,11 @@ function CreateArea({ addNote }) {
         />
         {/* add button, when clicked, calls addNote function from App component */}
         { isExpanded ? (
-          <button onClick={handleAddBtn} type="button">
+          <button
+            className="w-full text-white bg-grey-opacity hover:bg-slate-500 font-medium rounded-lg text-md px-5 py-2.5 text-center"
+            onClick={handleAddBtn}
+            type="button"
+          >
             Add
           </button>
         ) : null}

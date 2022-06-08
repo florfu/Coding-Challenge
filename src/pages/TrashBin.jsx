@@ -61,13 +61,17 @@ function TrashBin({ toggleTrashIcon }) {
         content={note.content}
         deleteNote={deleteTrashNote}
         restoreNote={restoreTrashNote}
+        trashScreen
       />
     );
   }
 
   return (
     <main>
-      {trashNotes.map(createNote)}
+      <section><h1 className="w-full text-center h-10 text-2xl text-gray-500">Trash bin</h1></section>
+      <section className="flex flex-row flex-wrap justify-evenly pb-14">
+        {trashNotes.map(createNote)}
+      </section>
     </main>
   );
 }

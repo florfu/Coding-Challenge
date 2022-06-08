@@ -65,14 +65,19 @@ function Home({ toggleTrashIcon }) {
         content={note.content}
         deleteNote={deleteNote}
         updateNote={updateNote}
+        trashScreen={false}
       />
     );
   }
 
   return (
     <main>
-      <CreateArea addNote={addNote} />
-      {notes.map(createNote)}
+      <section>
+        <CreateArea addNote={addNote} />
+      </section>
+      <section className="flex flex-row flex-wrap justify-evenly pb-14">
+        {notes.map(createNote)}
+      </section>
     </main>
   );
 }
