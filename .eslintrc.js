@@ -21,5 +21,6 @@ module.exports = {
     'react/prop-types': 0,
     'react/jsx-no-bind': ['error', { allowFunctions: true }],
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'no-unused-vars': 'warn',
   },
 };

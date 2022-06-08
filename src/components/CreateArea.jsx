@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function CreateArea({ addNote }) {
+function CreateArea({ handleAddInHome }) {
   const [input, setInput] = useState({
     title: '',
     content: '',
@@ -16,7 +16,7 @@ function CreateArea({ addNote }) {
   }
 
   function handleAddBtn(event) {
-    addNote(input);
+    handleAddInHome(input);
     setInput({
       title: '',
       content: '',
@@ -34,7 +34,7 @@ function CreateArea({ addNote }) {
   }
 
   return (
-    <div className="mx-auto mt-6 p-4 max-w-sm block bg-teal-custom border-gray-200 rounded-lg border shadow-lg sm:p-6 lg:p-8">
+    <div className="noteContainer mx-auto mt-6 p-4 max-w-sm block bg-teal-custom border-gray-200 rounded-lg border shadow-lg sm:p-6 lg:p-8">
       <form className="space-y-6 max-w">
         { isExpanded && (
         <input

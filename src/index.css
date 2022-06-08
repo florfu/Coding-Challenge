@@ -21,14 +21,16 @@ body {
   background-image: url("https://www.transparenttextures.com/patterns/diagonal-waves.png");
 }
 
-main {
-  min-height: calc(100% - 150px);
+main.home {
+  min-height: calc(100vh - 135px);
+}
+
+main.trash {
+  min-height: calc(100vh - 110px);
 }
 
 /* CLASSES */
-.textarea {
-  rows: 5;
-}
+
 
 .trash-icon {
   height: 55px;
