@@ -3,6 +3,10 @@ Save your ideas on this notes App.
 You can create new notes, edit them & delete them when you don't need them anymore.
 Created using React and Tailwindcss. Developed by Florencia Funes.
 
+## Live Demo
+
+https://post-it-app-ffunes.herokuapp.com/
+
 ## Installation
 
 1. First, clone the repo with:
