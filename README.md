@@ -3,6 +3,22 @@ Save your ideas on this notes App.
 You can create new notes, edit them & delete them when you don't need them anymore.
 Created using React and Tailwindcss. Developed by Florencia Funes.
 
+## Installation
+
+1. First, clone the repo with:
+
+    ```git clone git@github.com:florfu/Coding-Challenge.git```
+
+2. Navigate to the project with:
+
+    ```cd ./Coding-Challenge```
+
+3. Install dependencies:
+
+    ```npm install```
+
+    This will create the `node_modules` directory with all the needed packages.
+
 ## Available Scripts
 
 In the project directory, you can run:

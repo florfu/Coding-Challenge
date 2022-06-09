@@ -55,6 +55,7 @@ function Note({
         onChange={handleEdit}
         onBlur={handleUpdate}
         value={noteForm.title}
+        placeholder="Title"
         disabled={trashScreen} // on trashbin screen, edits are disabled
         maxLength="18"
       />

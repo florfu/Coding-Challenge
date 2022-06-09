@@ -113,7 +113,7 @@ function App() {
   return (
 
     <Router>
-      <div className="relative h-full min-h-full">
+      <div className="bg-gray-50 relative h-full min-h-full">
         <Header isTrashFull={deletedNotes.length > 0} />
         <Routes>
           <Route exact path="/" element={<Home notes={notes} addNote={addNote} deleteNote={deleteNote} updateNote={updateNote} />} />
