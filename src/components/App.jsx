@@ -84,7 +84,7 @@ function App() {
     setNotes(newNotes);
     // add trashNote to noteStorage. So notes in Home retrieves it.
     appendToStorage('noteStorage', restoredNote);
-    // TODO: Ver si puedo usar la funcion deleteTrashNote
+
     // delete restoredNote from trashNote
     const newDeletedNotes = deletedNotes.filter((element, index) => index !== restoredIndex);
     setDeletedNotes(newDeletedNotes);
@@ -102,6 +102,14 @@ function App() {
     localStorage.setItem('deletedNoteStorage', JSON.stringify(newNotes)); // update LocalStorage
   }
 
+  // deletes all notes in trash permanently
+  function emptyTrash() {
+    // delete all deleted notes
+    setDeletedNotes([]);
+    // update local storage
+    localStorage.setItem('deletedNoteStorage', JSON.stringify([]));
+  }
+
   return (
 
     <Router>
@@ -109,7 +117,7 @@ function App() {
         <Header isTrashFull={deletedNotes.length > 0} />
         <Routes>
           <Route exact path="/" element={<Home notes={notes} addNote={addNote} deleteNote={deleteNote} updateNote={updateNote} />} />
-          <Route path="/trashbin" element={<TrashBin deletedNotes={deletedNotes} deleteTrashNote={deleteTrashNote} restoreDeletedNote={restoreDeletedNote} />} />
+          <Route path="/trashbin" element={<TrashBin deletedNotes={deletedNotes} deleteTrashNote={deleteTrashNote} restoreDeletedNote={restoreDeletedNote} emptyTrash={emptyTrash} />} />
         </Routes>
         <Footer />
       </div>

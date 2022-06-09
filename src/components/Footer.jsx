@@ -5,9 +5,9 @@ function Footer() {
   const copyrightYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-teal-custom text-white w-full h-6 text-center">
+    <footer className="text-slate-600 w-full h-6 text-center">
       <p className="inset-0">
-        Brought to you by Florencia Funes ©
+        Developed by Florencia Funes ©
         {' '}
         {copyrightYear}
       </p>

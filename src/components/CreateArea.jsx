@@ -7,6 +7,9 @@ function CreateArea({ handleAddInHome }) {
     content: '',
   });
 
+  // character limit for characters counter
+  const characterLimit = 120;
+
   // handles input state (title & content)
   function handleInput(event) {
     const { name, value } = event.target;
@@ -36,7 +39,7 @@ function CreateArea({ handleAddInHome }) {
   }
 
   return (
-    <div className="noteContainer mx-auto mt-6 p-4 max-w-sm block bg-teal-custom border-gray-200 rounded-lg border shadow-lg sm:p-6 lg:p-8">
+    <div className="noteContainer mx-auto p-4 max-w-sm block bg-teal-custom border-gray-200 rounded-lg border shadow-lg sm:p-6 lg:p-8">
       <form className="space-y-6 max-w">
         {/* title input only shows up when isExpanded is true */}
         { isExpanded && (
@@ -59,6 +62,12 @@ function CreateArea({ handleAddInHome }) {
           onClick={expand}
           maxLength={120}
         />
+        { isExpanded ? (
+          <small className="block text-white text-right text-top mt-2">
+            {characterLimit - input.content.length}
+            / 120
+          </small>
+        ) : null}
         {/* Add button only shows up when isExpanded is true */}
         { isExpanded ? (
           <button
